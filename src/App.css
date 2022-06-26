@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: rgba(252, 241, 205, 0.589);
+  padding-bottom: 50px;
 }
 
 .App-logo {
@@ -35,4 +37,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+
+
+.navBarstyles {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  background: rgb(245, 197, 197);
+}
+
+
+.tableWraper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  margin: auto;
+}
+
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+
+.cartstyle {
+  background: rgb(255, 230, 0);
+  padding: 25px;
+  width: 75%;
+  margin: auto;
+  margin-top: 25px;
 }
