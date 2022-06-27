@@ -1,0 +1,257 @@
+
+
+
+===============>>>>>>>>(single reducer)<<<<<<<<<===============
+=========
+            Redux with vanilla JS basic requirements
+=========
+
+
+১. {createStore} কে import অথবা require করতে হবে
+
+২. type এবং action এর aginst এ constant declare করতে হবে যা অবশ্যই capital letter এর হতে হবে
+
+৩. initial state declare করতে হবে। ভাল হয় প্রতিটা ভ্যালুর জন্য আলাদা আলাদা variable declare না করে initialStateOfREQUIREMENTS নামের একটা object variable নিয়ে তা ভিতরে তার key value pair হিসেবে কাংক্ষিত variable গুলাকে declare করা
+
+৪. actions গুলা declare করা । actions মুলত আর কিছুই না একটা function যেটা পরবর্তি reducer function এর যে action parameter আছে তার ইন্ধন যোগায়। ইন্ধন হিসেবে এটা একটা object return করে যেখানে type আর payload define করা থাকে।
+
+৫. reducer functon declare করা । reducer function হচ্ছে এমন একটা function যে দুটা parameter নেয় initialStateOfREQUIREMENTS এবং action এরপর এর ভিতরে বিভিন্ন action.type এর উপর ভিত্তি করে "কি করনিয়" অথবা "কি রেজাল্ট print করতে হবে" তা define করা হয়ে থাকে switch-case এর ভিতরে।
+
+৬. createStore দিয়ে একটা store বানানো যেখানে createStore এর argument হিসেবে সেই reducer function কে দেয়া হয়।
+
+৭. store এ store.subscribe() method apply করে তার ভিতরে getState() method দিয়ে কাংক্ষিত কাজ করা যেমন ঃ UI তে দেখানোর কাজ
+
+৮. store.dispatch(ACTION_FUNCTION(PAYLOAD)) function এর সাহায্যে action function কে প্রয়োজনিয় payload provide করে invoke করা।
+
+
+
+
+
+
+
+=======>>>>>>>>(Multiple reducer or combine reducer)<<<<<<<<<======
+
+
+
+
+
+
+১. {createStore,combineReducers} কে import অথবা require করতে হবে
+
+২. type এবং action এর aginst এ constant declare করতে হবে যা অবশ্যই capital letter এর হতে হবে
+
+৩. initial state declare করতে হবে। ভাল হয় প্রতিটা ভ্যালুর জন্য আলাদা আলাদা variable declare না করে initialStateOfREQUIREMENTS নামের একটা object variable নিয়ে তা ভিতরে তার key value pair হিসেবে কাংক্ষিত variable গুলাকে declare করা
+
+৪. actions গুলা declare করা । actions মুলত আর কিছুই না একটা function যেটা পরবর্তি reducer function এর যে action parameter আছে তার ইন্ধন যোগায়। ইন্ধন হিসেবে এটা একটা object return করে যেখানে type আর payload define করা থাকে।
+
+৫. reducer functon declare করা । reducer function হচ্ছে এমন একটা function যে দুটা parameter নেয় initialStateOfREQUIREMENTS এবং action এরপর এর ভিতরে বিভিন্ন action.type এর উপর ভিত্তি করে "কি করনিয়" অথবা "কি রেজাল্ট print করতে হবে" তা define করা হয়ে থাকে switch-case এর ভিতরে।
+
+৬. একটা rootReducer create করতে হবে যা সব গুলো reducers function কে একটা function এ combine করবে। তার জন্য combineReducers() এর argument হিসেবে সেইসব reducer function গুলো কে একটা object এর key-value pair হিসেবে দেয়া হয়
+
+৭. createStore দিয়ে একটা store বানানো যেখানে createStore এর argument হিসেবে সেই rootReducer function কে দেয়া হয়।
+
+৮. store এ store.subscribe() method apply করে তার ভিতরে getState() method দিয়ে কাংক্ষিত কাজ করা যেমন ঃ UI তে দেখানোর কাজ
+
+৯. store.dispatch(ACTION_FUNCTION(PAYLOAD)) function এর সাহায্যে action function কে প্রয়োজনিয় payload provide করে invoke করা। but এক্ষেত্রে যেহেতু rootReducers সবগুলা reducer funciton এর একটা combo তাই daspatch function কে invoke করলেও সব গুলা reducer function এর update দেখতে পাচ্ছি যদি update value  কেবল যার action কে  invoke করা হচ্চে কেবল তারই দেখাচ্ছে.
+
+
+
+
+
+
+
+
+// =====>>>>>>>>(single reducer with redux-logger)<<<<<<<<<=======
+=========
+            Redux in vanilla JS with redux-logger
+=========
+
+
+০. redux logger install করতে হবে " npm install redux-logger " 
+
+১.ক {createStore, combineReducers, applyMiddleware} কে import অথবা require করতে হবে
+
+১.খ logger কে redux logger থেকে require করতে হবে 
+
+২. type এবং action এর aginst এ constant declare করতে হবে যা অবশ্যই capital letter এর হতে হবে
+
+৩. initial state declare করতে হবে। ভাল হয় প্রতিটা ভ্যালুর জন্য আলাদা আলাদা variable declare না করে initialStateOfREQUIREMENTS নামের একটা object variable নিয়ে তা ভিতরে তার key value pair হিসেবে কাংক্ষিত variable গুলাকে declare করা
+
+৪. actions গুলা declare করা । actions মুলত আর কিছুই না একটা function যেটা পরবর্তি reducer function এর যে action parameter আছে তার ইন্ধন যোগায়। ইন্ধন হিসেবে এটা একটা object return করে যেখানে type আর payload define করা থাকে।
+
+৫. reducer functon declare করা । reducer function হচ্ছে এমন একটা function যে দুটা parameter নেয় initialStateOfREQUIREMENTS এবং action এরপর এর ভিতরে বিভিন্ন action.type এর উপর ভিত্তি করে "কি করনিয়" অথবা "কি রেজাল্ট print করতে হবে" তা define করা হয়ে থাকে switch-case এর ভিতরে।
+
+৬. createStore দিয়ে একটা store বানানো যেখানে createStore এর argument হিসেবে সেই reducer function কে দেয়া হয় পাশাপাশি applyMiddleware এর argument হিসেবে সেই logger কে দেয়া 
+
+৭. store এ store.subscribe() method apply করে তার ভিতরে getState() method দিয়ে কাংক্ষিত কাজ করা যেমন ঃ UI তে দেখানোর কাজ
+
+৮. store.dispatch(ACTION_FUNCTION(PAYLOAD)) function এর সাহায্যে action function কে প্রয়োজনিয় payload provide করে invoke করা।
+
+
+
+
+
+
+
+
+
+
+
+// ====>>>>(single reducer with redux-thunk & axios)<<<<<<======
+=========
+            Redux in vanilla JS with redux-thunk & axios
+=========
+
+
+০. redux thunk install করতে হবে [thunk একটা middleware যা আমাদের কে side effect হিসেবে কোন api কে redux project এ call করতে সাহায্য করে]
+
+১.ক {createStore, combineReducers, applyMiddleware} কে import অথবা require করতে হবে
+
+১.খ thunk এবং axios কে require করতে হবে 
+
+২. type এবং action এর aginst এ constant declare করতে হবে যা অবশ্যই capital letter এর হতে হবে [ এখানে ৩ টা action হবে ঃ (ক) API এ একটা request পাঠাতে হবে , (খ) data কে successfully recieve করে একটা variable এ রাখতে হবে, (গ) কোন error আসলে তাকে recieve করার কাজ করতে হবে]
+
+৩. initial state declare করতে হবে। ভাল হয় প্রতিটা ভ্যালুর জন্য আলাদা আলাদা variable declare না করে initialStateOfREQUIREMENTS নামের একটা object variable নিয়ে তা ভিতরে তার key value pair হিসেবে কাংক্ষিত variable গুলাকে declare করা
+
+৪. actions গুলা declare করা । actions মুলত আর কিছুই না একটা function যেটা পরবর্তি reducer function এর যে action parameter আছে তার ইন্ধন যোগায়। ইন্ধন হিসেবে এটা একটা object return করে যেখানে type আর payload define করা থাকে।
+
+৫. reducer function declare করা । reducer function হচ্ছে এমন একটা function যে দুটা parameter নেয় initialStateOfREQUIREMENTS এবং action এরপর এর ভিতরে বিভিন্ন action.type এর উপর ভিত্তি করে "কি করনিয়" অথবা "কি রেজাল্ট print করতে হবে" তা define করা হয়ে থাকে switch-case এর ভিতরে।
+
+৬. createStore দিয়ে একটা store বানানো যেখানে createStore এর argument হিসেবে সেই reducer function কে দেয়া হয় পাশাপাশি applyMiddleware এর argument হিসেবে সেই thunk কে দেয়া 
+
+৭. store এ store.subscribe() method apply করে তার ভিতরে getState() method দিয়ে কাংক্ষিত কাজ করা যেমন ঃ UI তে দেখানোর কাজ
+
+৮. এখানে আমরা dispatch এ action function কে সরাসরি দিতে পারব না কারন আমরা আগেই জেনেছি fetching এর কাজটাতে ৩ ধরনের ঘটনা ঘটতে পারে তাই এমন একটা common function বানাতে হবে যার ভিতরে এই ৩ টা কাজ হবে আর সেই common function কে store.dispatch(FETCHING_FUNCTION()) এর ভিতরে invoke করতে হবে।
+
+৯. FETCHING_FUNCTION() declare করতে হবে। যেখান থেকে সেই ৩ টা কাজের একটা callback function return হবে
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================================================
+                Redux in React App with Thunk, Tool Kit and Axios
+====================================================================================================
+
+
+=========
+            Senerio 1 : একটা counter app বানানোর মাধমে শিখব কিভাবে কোন state কে redux দিয়ে controll করে তার change গুলোকে UI তে দেখানো যায়।
+=========
+
+১. প্রথমে react readux এবং react redux tool kit টা আমাদের project এ install করে নিতে হবে 
+        link    :   https://redux-toolkit.js.org/introduction/getting-started
+        command :   "npm i react-redux" && "npm install @reduxjs/toolkit"
+
+২.I counter app এর জন্য createSlice method এর সাহায্যে counterSlice.js (path : src/components/counter/counterSlice.js) নামের একটা slice ফাইল বানাতে হবে যার ভিতরে আমরা sliceName+initialStateOfREQUIREMENTS+actions+reducer গুলোকে একটা object এর key-value pair হিসেবে declare করতে হবে মনে রাখতে হবে এখানের ব্যবহৃত কিছু fixed key আছে (name, initialState, reducers) আর reducers এর যে state parameter আছে তার value ও এর "name.initialState" । 
+[createSlice initialStateOfREQUIREMENTS+actions+reducer গুলোকে redux-toolkit এর সাহায্যে একটু নতুন ধাচে declare করবে এবং slice file declare করার সময় অবশ্যই "Slice" word টা থাকতে হবে। এটা করার ফলে আমরা এই slice টা থেকে ২ টা জিনিস পাব actions function এবং reducer function এবং কোন astion type কে define করা লাগবে না] । 
+
+২.II এর পরে এই counterSlice ফাইল থেকে ৩ টা জিনিস কে export করতে হবে যাতে অন্যন্য component থেকে এদের access পাও্যা যায়,
+            ১) export const counterSlice = createSlice({.....})
+            ২) export const {action1,action2,action3.....} = createSlice.actions
+            ৩) export default counterSlice.reducer
+
+৩.I এবার আমাদের store create করতে হবে configureStore method use করে (path : src/app/store.js) । configureStore এর ভিতরে একটা object define করতে হয় যার ভিতরে reducer নামের object থাকে এবং এখানে সব গুলা defaultly exported reducer গুলো কে key-value pair হিসেবে রাখা হয়.
+[এটাই মূলত rootReducer এর combine-reducers এর কাজ করে]
+
+৩.II এবার এই created store কে export default করে দিতে হবে
+
+৪. এবার store provide করতে হবে কে index.js এ। এজন্য index.js APP component কে <Provider store={store}> component দিয়ে wrap করে দিতে হবে । তবে এখানে অবশ্যই store props কে lift করেতেই হবে
+
+
+
+/*************************
+        step 1 থেকে step 4 পর্যন্ত আমরা redux কে existence এ এনেছি আর এবার আমাদের redux এর store থেকে data কে বিভিন্ন components এ use করার পালা 
+**************************/
+
+
+5.I Counter.js নামের একটা component বানাব আর সেখানে styling করে layout টাকে দাড় করাব (path : src/components/counter/Counter.js)
+
+5.II এখানে আমরা useSelector hook use করে একটা state variable declare করব । useSelector মূলত store কে return করে state variable এর initial value হিসেবে। 
+        const countStateVariable = useSelector((store)=>store.key.initialStateValue)
+
+5.III useDispatch hook দিয়ে dispatch method কে আনতে হবে
+        const dispatch = useDispatch()
+
+5.IV event অনুযায়ি এই dispatch method use করে action function কে invoke করতে হবে যত গুল action কে implement করতে চাই তার উপর ভিত্তি করে  (increment,decrement,reset)
+        onclick={()=>{dispatch(incremetnAction()})     
+
+
+
+=========
+            Senerio 2 : axios,thunk এর সাহায্যে কিভাবে data API থেকে fetch করে কোন state রাখা যায় এবং তাকে manage করা যায়
+=========
+
+০. এক্ষেত্রে কিছু জিনিস আগে থেকে মাথায় রাখতে হবে,
+                ক) কোন API থেকে data কে আনার পুরো কাজটা ৩ টা state এ ঘটে
+                        1. pending state    : API তে reques পাঠানো শুরু থেকে resul আসার আগ পর্যন্ত অবস্থা
+                        2. success state    : result পাও্যা গেলে এই অবস্থায় উপনিত হয়
+                        3. error state      : result না পাও্যা গেলে এই অবস্থায় উপনিত হয়
+                খ) উপরুক্ত state এর উপর ভিত্তিএ করে Slice file এ reducer+actions এর declareation ও ভিন্ন ভিন্ন হয়। এক্ষেত্রে মূলত reducer এর পরিবর্তে extraReducers use করা হয়
+
+
+১. প্রথমে react readux , react redux tool kit,redux-thunk এবং axios টা আমাদের project এ install করে নিতে হবে 
+        link    :   https://redux-toolkit.js.org/introduction/getting-started
+        command :   "npm i react-redux" + "npm install @reduxjs/toolkit" + "npm i axios" && "npm i "
+
+২.I একটা fetchPostsAction নামের একটা action create করতে হবে createAsynctThunk এর সাহায্যে
+
+[মনে রাখতে হবে normal state manage করার সময় আমরা extra কোণ action function create না করলেও fetching-API related কাজ করার সময় অবশ্যি action লাগবেই যেটা পরব্ররতিতে আমাদের dispatch এ সাহায্য করবে]
+
+২.II posts app এর জন্য createSlice method এর সাহায্যে postSlice.js (path : src/components/counter/postSlice.js) নামের একটা slice ফাইল বানাতে হবে যার ভিতরে আমরা sliceName+initialStateOfREQUIREMENTS+actions+extraReducers গুলোকে একটা object এর key-value pair হিসেবে declare করতে হবে মনে রাখতে হবে এখানের ব্যবহৃত কিছু fixed key আছে (name, initialState, extraReducers) 
+
+২.III extraReducers এর value হিসেবে একটা middlewearfunction(thunk related) set করা হয় যা builder নামের একটা parameter নেয় এবং এই builder এর সাথে উপরুক্ত 3 টা addCase method use করা হয় (.pending, .fulfilled, .rejected)    
+
+২.IV আবার এই addCase method একটা fetchPostsAction action-function কে parameter হিসেবে নেয় যার উপর ঐ .pending/ .fulfilled/ .rejected method apply করা হয় আর সেই অনুযায়ী state এর ভালু কে modify করা হয় । 
+
+২.V এর পরে এই counterSlice ফাইল থেকে 2 টা জিনিস কে export করতে হবে যাতে অন্যন্য component থেকে এদের access পাও্যা যায়,
+            ১) export const fetchPostsAction = createAsynctThunk(.....)
+            ২) export default postSlice.reducer [যদিও Slice file এ আমরা extraReducers use করেছহি কিন্তু export করার সময় reducer হিসেবেই করতে হবে]
+
+৩.I এবার আমাদের store create করতে হবে configureStore method use করে (path : src/app/store.js) । configureStore এর ভিতরে একটা object define করতে হয় যার ভিতরে reducer নামের object থাকে এবং এখানে সব গুলা defaultly exported reducer গুলো কে key-value pair হিসেবে রাখা হয়.
+[এটাই মূলত rootReducer এর combine-reducers এর কাজ করে]
+
+৩.II এবার এই created store কে export default করে দিতে হবে
+
+৪. এবার store provide করতে হবে কে index.js এ। এজন্য index.js APP component কে <Provider store={store}> component দিয়ে wrap করে দিতে হবে । তবে এখানে অবশ্যই store props কে lift করেতেই হবে
+
+
+
+/*************************
+        step 1 থেকে step 2 পর্যন্ত আমরা redux কে fetching এর জন্য enabled করেছি আর step 3 - step 4 আমরা শুধু যতুটুকি বাকি আছে সেই তুকিই করেছি কারন আগে থকেকেই counter app project run ছিল 
+**************************/
+
+
+5.I Posts.js নামের একটা component বানাব আর সেখানে styling করে layout টাকে দাড় করাব (path : src/components/Posts/Posts.js)
+
+5.II এখানে আমরা useSelector hook use করে একটা state variable declare করব । useSelector মূলত store কে return করে state variable এর initial value হিসেবে। 
+        const {isLoading,data,error} = useSelector((store)=>store.key)
+
+5.III useDispatch hook দিয়ে dispatch method কে আনতে হবে
+        const dispatch = useDispatch()
+
+5.IV এবার useEffect এর ভিতরে action-function fetchPostsAction কে এই Posts component এ dispatch করব
+  useEffect(()=>{
+    dispatch(fetchPostsAction())
+  },[])  
+
+
+
+
+
+=========
+            Senerio 3 : axios,thunk এর সাহায্যে কিভাবে frontend based CRUD-operation চালাতে হয়
+=========
+
+
+
